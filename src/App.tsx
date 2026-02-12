@@ -11,11 +11,6 @@ import { MiddleSection } from "./components/ui/middle-section";
 import { BottomSection } from "./components/ui/bottom-section";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-
-    const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
   return (
     <SidebarProvider>
     <Flex minH='100dvh'>
