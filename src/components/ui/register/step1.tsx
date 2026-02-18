@@ -30,16 +30,6 @@ export default function StepOne() {
         }
       />
 
-      <Input
-        placeholder="Last Name"
-        value={data.lastName}
-        onChange={(e) =>
-          updateData({
-            lastName: e.target.value,
-          })
-        }
-      />
-
       <Button
         colorScheme="teal"
         w="full"
