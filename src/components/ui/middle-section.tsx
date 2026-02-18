@@ -75,19 +75,19 @@ export function MiddleSection() {
     
                   <HStack gap="2">
                     <PromptButton
-                      icon={<Icon color="blue.600"><LuImage fontSize="lg" /></Icon>}
+                      icon={<Icon color="green.500"><LuImage fontSize="lg" /></Icon>}
                       description="Create image"
                     />
                     <PromptButton
-                      icon={<LuImage color="blue.500" fontSize="lg" />}
+                      icon={<Icon color="blue.500"><LuImage fontSize="lg" /></Icon>}
                       description="Code"
                     />
                     <PromptButton
-                      icon={<LuImage color="cyan.500" fontSize="lg" />}
+                      icon={<Icon color="cyan.500"><LuImage fontSize="lg" /></Icon>}
                       description="Analyze data"
                     />
                     <PromptButton
-                      icon={<LuImage color="cyan.500" fontSize="lg" />}
+                       icon={<Icon color="cyan.500"><LuImage fontSize="lg" /></Icon>}
                       description="Surprise"
                     />
                     <PromptButton description="More" />
