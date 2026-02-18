@@ -1,4 +1,8 @@
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Stack,
+} from "@chakra-ui/react";
 import { SidebarProvider } from "./components/ui/sidebar-context";
 import { Sidebar } from "./components/ui/sidebar";
 import { TopSection } from "./components/ui/top-section";
