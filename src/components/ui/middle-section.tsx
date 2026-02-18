@@ -8,6 +8,7 @@ import {
   Input,
   InputGroup,
   Button,
+  Icon,
 } from "@chakra-ui/react";
 import { FileUpload } from "@chakra-ui/react";
 import { LuArrowUp } from "react-icons/lu";
@@ -74,7 +75,7 @@ export function MiddleSection() {
     
                   <HStack gap="2">
                     <PromptButton
-                      icon={<LuImage color="green.500" fontSize="lg" />}
+                      icon={<Icon color="blue.600"><LuImage fontSize="lg" /></Icon>}
                       description="Create image"
                     />
                     <PromptButton
