@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from "react";
 
-
 /**
  * Our form state
  */
@@ -10,6 +9,15 @@ type FormData = {
   email: string;
   username: string;
   bio: string;
+  uni: string;
+  password: string;
+  conpassword: string;
+  degree: string;
+  course: string;
+  grad: string;
+  gender: string;
+  picture: File | null;
+  picturePreview: string | null;
 };
 
 type FormContextType = {
@@ -33,6 +41,15 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
     email: "",
     username: "",
     bio: "",
+    uni: "",
+    password: "",
+    conpassword: "",
+    degree: "",
+    course: "",
+    grad: "",
+    gender: "",
+    picture: null,
+    picturePreview: null,
   });
 
   const updateData = (values: Partial<FormData>) => {
@@ -46,6 +63,15 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
       email: "",
       username: "",
       bio: "",
+      uni: "",
+      password: "",
+      conpassword: "",
+      degree: "",
+      course: "",
+      grad: "",
+      gender: "",
+      picture: null,
+      picturePreview: null,
     });
   };
 
