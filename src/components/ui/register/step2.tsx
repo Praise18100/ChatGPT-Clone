@@ -16,20 +16,40 @@ export default function StepTwo() {
   const navigate = useNavigate();
 
   return (
-    <VStack w="500px" maxW="1000px" mx="auto" mt={20}>
-      <Heading size="md">Step 2: Education</Heading>
+    <VStack
+      w="50%"
+      maxW="70%"
+      mx="auto"
+      mt="5"
+      color="teal.600"
+      bg="gray.50"
+      px="20"
+      pt="10"
+      pb="10"
+      mb="20"
+      borderLeftWidth="10px"
+      borderLeftColor="teal.600"
+    >
+      <Heading size="2xl" fontWeight="bolder">
+        Step 2: Education
+      </Heading>
 
-      <Field.Root>
-        <Field.Label>University/College</Field.Label>
+      <Field.Root pt="10%">
+        <Field.Label fontWeight="bolder" fontSize="md">
+          University/College
+        </Field.Label>
 
         <Input
           value={data.uni}
+          
           onChange={(e) => updateData({ uni: e.target.value })}
         />
       </Field.Root>
 
       <Field.Root>
-        <Field.Label>Qualification/Degree</Field.Label>
+        <Field.Label fontWeight="bolder" fontSize="md">
+          Qualification/Degree
+        </Field.Label>
         <NativeSelect.Root>
           <NativeSelect.Field
             value={data.degree}
@@ -49,7 +69,9 @@ export default function StepTwo() {
       </Field.Root>
 
       <Field.Root>
-        <Field.Label>Course of Study</Field.Label>
+        <Field.Label fontWeight="bolder" fontSize="md">
+          Course of Study
+        </Field.Label>
 
         <Input
           value={data.course}
@@ -58,14 +80,16 @@ export default function StepTwo() {
       </Field.Root>
 
       <Field.Root>
-        <Field.Label>Year of Graduatiom</Field.Label>
+        <Field.Label fontWeight="bolder" fontSize="md">
+          Year of Graduatiom
+        </Field.Label>
         <NativeSelect.Root>
           <NativeSelect.Field
             value={data.grad}
             onChange={(e) => updateData({ grad: e.target.value })}
             name=""
           >
-            <For each={[" ", "2025", "2024", "2023","2022"]}>
+            <For each={[" ", "2025", "2024", "2023", "2022"]}>
               {(item) => (
                 <option key={item} value={item}>
                   {item}
@@ -77,17 +101,33 @@ export default function StepTwo() {
         </NativeSelect.Root>
       </Field.Root>
 
-      <Flex gap={70} mt={20}>
+      <Flex gap="2%" mt={20}>
         <Button
-          colorPalette="teal"
+          size="xl"
           w="200px"
+          mr="3"
+          color="white"
+          bg="teal.600"
+          cursor="pointer"
+          borderRadius="full"
+          _hover={{ opacity: 0.8 }}
+          mt="15"
+          mx="5"
           onClick={() => navigate("/register/step1")}
         >
           Previous
         </Button>
         <Button
-          colorPalette="teal"
+          size="xl"
           w="200px"
+          mr="3"
+          color="white"
+          bg="teal.600"
+          cursor="pointer"
+          borderRadius="full"
+          _hover={{ opacity: 0.8 }}
+          mt="15"
+          mx="5"
           onClick={() => navigate("/register/step3")}
         >
           Next

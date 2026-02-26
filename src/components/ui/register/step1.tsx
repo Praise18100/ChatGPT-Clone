@@ -1,10 +1,4 @@
-import {
-  VStack,
-  Input,
-  Button,
-  Heading,
-  Field,
-} from "@chakra-ui/react";
+import { VStack, HStack, Input, Button, Heading, Field, Flex } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useRegister } from "../form-context";
 
@@ -14,11 +8,28 @@ export default function StepOne() {
   const genders = ["Male", "Female", "Other"];
 
   return (
-    <VStack w="500px" maxW="1000px" mx="auto" mt={20}>
-      <Heading size="md">Step 1: Personal Info</Heading>
+    <VStack
+      w="50%"
+      maxW="70%"
+      mx="auto"
+      mt="5"
+      color="teal.600"
+      bg="gray.50"
+      px="20"
+      pt="10"
+      pb="10"
+      mb="20"
+      borderLeftWidth="10px"
+      borderLeftColor="teal.600"
+    >
+      <Heading size="2xl" fontWeight="bolder">
+        Step 1: Personal Info
+      </Heading>
 
-      <Field.Root>
-        <Field.Label>First Name</Field.Label>
+      <Field.Root pt="10%" >
+        <Field.Label fontWeight="bolder" fontSize="md" pb="3px">
+          First Name
+        </Field.Label>
         <Input
           placeholder="First Name"
           value={data.firstName}
@@ -31,7 +42,9 @@ export default function StepOne() {
       </Field.Root>
 
       <Field.Root>
-        <Field.Label>Last Name</Field.Label>
+        <Field.Label fontWeight="bolder" fontSize="md" pb="3px" pt="4%">
+          Last Name
+        </Field.Label>
         <Input
           placeholder="Last Name"
           value={data.lastName}
@@ -44,7 +57,9 @@ export default function StepOne() {
       </Field.Root>
 
       <Field.Root>
-        <Field.Label>Email</Field.Label>
+        <Field.Label fontWeight="bolder" fontSize="md" pb="3px" pt="4%">
+          Email
+        </Field.Label>
         <Input
           placeholder="Email"
           value={data.email}
@@ -53,9 +68,11 @@ export default function StepOne() {
       </Field.Root>
 
       <Field.Root>
-        <Field.Label>Gender</Field.Label>
-        
-        <VStack gap ={3} align="start">
+        <Field.Label fontWeight="bolder" fontSize="md"pb="3px" pt="4%">
+          Gender
+        </Field.Label>
+
+        <HStack gap={30} align="start">
           {genders.map((gender) => (
             <label key={gender}>
               <input
@@ -68,17 +85,26 @@ export default function StepOne() {
               {gender}
             </label>
           ))}
-        </VStack>
+        </HStack>
       </Field.Root>
 
-      <Button
-        colorPalette="teal"
+     <Flex mt={10}>
+       <Button
+        size="xl"
         w="200px"
-        mt={15}
+        mr="3"
+        color="white"
+        bg="teal.600"
+        cursor="pointer"
+        borderRadius="full"
+        _hover={{ opacity: 0.8 }}
+        mt="15"
+        mx="5"
         onClick={() => navigate("/register/step2")}
       >
         Next
       </Button>
+     </Flex>
     </VStack>
   );
 }

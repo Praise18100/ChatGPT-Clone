@@ -9,6 +9,7 @@ import { TopSection } from "./components/ui/top-section";
 import { MiddleSection } from "./components/ui/middle-section";
 import { BottomSection } from "./components/ui/bottom-section";
 import { Register } from "./pages/register";
+import Info from "./pages/info";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 
             <Routes>
               <Route path="/" element={<MiddleSection />} />
+              <Route path="/info/*" element={<Info/>} />
               <Route path="/register/*" element={<Register />} />
             </Routes>
 

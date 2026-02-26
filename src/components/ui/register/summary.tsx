@@ -16,11 +16,27 @@ export default function Summary() {
   const navigate = useNavigate();
 
   return (
-    <VStack w="500px" maxW="1000px" mx="auto" mt={10}>
-      <Heading size="xl">Registration Complete</Heading>
+    <VStack
+      w="50%"
+      maxW="70%"
+      mx="auto"
+      mt="5"
+      color="teal.600"
+      bg="gray.50"
+      px="20"
+      pt="10"
+      pb="10"
+      mb="20"
+      borderLeftWidth="10px"
+      borderLeftColor="teal.600"
+    >
+      <Heading size="2xl" fontWeight="bolder">
+        Registration Complete
+      </Heading>
 
-      <SimpleGrid columns={2} gap={3} w="100%">
-        <Text fontWeight="bold">Profile Picture</Text>
+      <SimpleGrid gap={3} w="100%" pt="10%">
+        <Flex display="">
+          <Text fontWeight="bold">Profile Picture</Text>
         {data.picturePreview && (
           <img
             src={data.picturePreview}
@@ -30,7 +46,7 @@ export default function Summary() {
           />
         )}
 
-        <Text fontWeight="bold">First Name</Text>
+        <Text fontWeight="bold" >First Name</Text>
         <Text>{data.firstName}</Text>
 
         <Text fontWeight="bold">Last Name</Text>
@@ -64,6 +80,7 @@ export default function Summary() {
 
         <Text fontWeight="bold">Bio</Text>
         <Text>{data.bio}</Text>
+        </Flex>
       </SimpleGrid>
 
       <Checkbox.Root mb={5} mt={5} colorPalette="teal">
@@ -72,17 +89,33 @@ export default function Summary() {
         <Checkbox.Label>Accept terms and conditions</Checkbox.Label>
       </Checkbox.Root>
 
-      <Flex gap={70} ml={0}>
+      <Flex gap="2%" ml={0}>
         <Button
-          colorPalette="teal"
+          size="xl"
           w="200px"
+          mr="3"
+          color="white"
+          bg="teal.600"
+          cursor="pointer"
+          borderRadius="full"
+          _hover={{ opacity: 0.8 }}
+          mt="15"
+          mx="5"
           onClick={() => navigate("/register/step3")}
         >
           Previous
         </Button>
         <Button
-          colorPalette="teal"
+          size="xl"
           w="200px"
+          mr="3"
+          color="white"
+          bg="teal.600"
+          cursor="pointer"
+          borderRadius="full"
+          _hover={{ opacity: 0.8 }}
+          mt="15"
+          mx="5"
           onClick={() => navigate("../../")}
         >
           Submit
