@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import {
   Box,
   Text,
@@ -27,7 +26,7 @@ interface Comment {
 }
 
 export default function Posts() {
-  const { state } = useLocation();
+
 
   const { userId } = useParams();
    const { userName} = useParams();
