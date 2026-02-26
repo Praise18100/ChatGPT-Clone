@@ -28,7 +28,7 @@ interface Comment {
 export default function Posts() {
 
 
-  const { userId } = useParams();
+  const { postId } = useParams();
    const { userName} = useParams();
 
   const [posts, setPosts] = useState<Post[]>([]);
@@ -37,15 +37,15 @@ export default function Posts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  if (!userId) return;
+  if (!postId) return;
 
-  fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+  fetch(`https://jsonplaceholder.typicode.com/posts?userId=${postId}`)
     .then((res) => res.json())
     .then((data) => {
       setPosts(data);
       setLoading(false);
     });
-}, [userId]);
+}, [postId]);
 
   const toggleComments = async (postId: number) => {
     if (comments[postId]) {
