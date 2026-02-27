@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export function TopSection() {
   const navigate = useNavigate();
   const location = useLocation();
+
   const { sideBarVisible, toggleSidebar } = useSidebarContext();
   return (
     <Flex justify="space-between" align="center" p="3">
@@ -38,36 +39,22 @@ export function TopSection() {
       {sideBarVisible && <ChatGPTMenu />}
 
       {location.pathname === "/" && (
-      <Avatar.Root
-        size="sm"
+        <Avatar.Root
+          size="sm"
           mr="3"
           color="white"
           bg="teal.600"
           cursor="pointer"
           borderRadius="full"
           px="4"
-        _hover={{ opacity: 0.8 }}
-        onClick={() => navigate("/info")}
-      >
-        <Avatar.Fallback name="Praise" />
-      </Avatar.Root>
+          _hover={{ opacity: 0.8 }}
+          onClick={() => navigate("/info")}
+        >
+          <Avatar.Fallback name="Praise" />
+        </Avatar.Root>
       )}
 
-       {location.pathname === "/info/users" && (
-        <Button size="sm"
-          mr="3"
-          color="white"
-          bg="teal.600"
-          cursor="pointer"
-          borderRadius="full"
-          px="4"
-        _hover={{ opacity: 0.8 }}
-        onClick={() => navigate("/register")}>
-          Register
-        </Button>
-      )}
-
-      {location.pathname === "/register/step1" && (
+      {location.pathname === "/info/users" && (
         <Button
           size="sm"
           mr="3"
@@ -76,12 +63,30 @@ export function TopSection() {
           cursor="pointer"
           borderRadius="full"
           px="4"
-           _hover={{ opacity: 0.8 }}
+          _hover={{ opacity: 0.8 }}
+          onClick={() => navigate("/register")}
+        >
+          Register
+        </Button>
+      )}
+
+      {(location.pathname === "/register/step1" ||
+        location.pathname === "/register/step2" ||
+        location.pathname === "/register/step3" ||
+        location.pathname === "/register/summary") && (
+        <Button
+          size="sm"
+          mr="3"
+          color="white"
+          bg="teal.600"
+          cursor="pointer"
+          borderRadius="full"
+          px="4"
+          _hover={{ opacity: 0.8 }}
           onClick={() => navigate("/info/users")}
         >
-           All Users
+          All Users
         </Button>
-        
       )}
     </Flex>
   );

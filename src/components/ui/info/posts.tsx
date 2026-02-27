@@ -10,7 +10,7 @@ import {
   Badge,
 } from "@chakra-ui/react";
 import { LuMessageSquare, LuChevronDown, LuChevronUp } from "react-icons/lu";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 interface Post {
   id: number;
@@ -26,26 +26,27 @@ interface Comment {
 }
 
 export default function Posts() {
-
-
   const { postId } = useParams();
-   const { userName} = useParams();
+  const { userName } = useParams();
+  const navigate = useNavigate();
 
   const [posts, setPosts] = useState<Post[]>([]);
   const [comments, setComments] = useState<{ [key: number]: Comment[] }>({});
-  const [openComments, setOpenComments] = useState<{ [key: number]: boolean }>({});
+  const [openComments, setOpenComments] = useState<{ [key: number]: boolean }>(
+    {},
+  );
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  if (!postId) return;
+    if (!postId) return;
 
-  fetch(`https://jsonplaceholder.typicode.com/posts?userId=${postId}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setPosts(data);
-      setLoading(false);
-    });
-}, [postId]);
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${postId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data);
+        setLoading(false);
+      });
+  }, [postId]);
 
   const toggleComments = async (postId: number) => {
     if (comments[postId]) {
@@ -53,7 +54,7 @@ export default function Posts() {
       return;
     }
     const res = await fetch(
-      `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
+      `https://jsonplaceholder.typicode.com/comments?postId=${postId}`,
     );
     const data = await res.json();
     setComments((prev) => ({ ...prev, [postId]: data }));
@@ -69,6 +70,23 @@ export default function Posts() {
 
   return (
     <Box p="6" maxW="750px" mx="auto">
+     <Flex justifyContent="flex-end">
+       {location.pathname === `/info/posts/${postId}` && (
+        <Button
+          size="sm"
+          mr="3"
+          color="white"
+          bg="teal.600"
+          cursor="pointer"
+          borderRadius="full"
+          px="4"
+          _hover={{ opacity: 0.8 }}
+          onClick={() => navigate("/info/users")}
+        >
+          All Users
+        </Button>
+      )}
+     </Flex>
       <Text fontSize="2xl" fontWeight="bold" color="teal.600">
         Posts
       </Text>
@@ -119,16 +137,17 @@ export default function Posts() {
 
             {openComments[post.id] && (
               <Stack gap="3" mt="4">
-                <Text fontSize="xs" fontWeight="bold" color="teal.500" textTransform="uppercase" >
+                <Text
+                  fontSize="xs"
+                  fontWeight="bold"
+                  color="teal.500"
+                  textTransform="uppercase"
+                >
                   {comments[post.id]?.length} Comments
                 </Text>
                 {comments[post.id]?.map((comment) => (
-                  <Box
-                    key={comment.id}
-                    bg="teal.50"
-                    p="3"
-                  >
-                    <Flex align="center" gap="2" mb="1" >
+                  <Box key={comment.id} bg="teal.50" p="3">
+                    <Flex align="center" gap="2" mb="1">
                       <Flex
                         w="6"
                         h="6"
@@ -142,10 +161,19 @@ export default function Posts() {
                       >
                         {comment.name.charAt(0).toUpperCase()}
                       </Flex>
-                      <Text fontWeight="semibold" fontSize="sm" color="teal.700" textTransform="capitalize">
+                      <Text
+                        fontWeight="semibold"
+                        fontSize="sm"
+                        color="teal.700"
+                        textTransform="capitalize"
+                      >
                         {comment.name}
                       </Text>
-                      <Badge colorPalette="teal" size="sm" textTransform="lowercase">
+                      <Badge
+                        colorPalette="teal"
+                        size="sm"
+                        textTransform="lowercase"
+                      >
                         {comment.email}
                       </Badge>
                     </Flex>
